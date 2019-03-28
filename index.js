@@ -1,12 +1,13 @@
 const express = require("express");
 const helmet = require("helmet");
+const knex = require('knex');
 
 const knexConfig = {
   client: "sqlite3",
   connection: {
     filename: "./data/recipebook.sqlite3"
   },
-  useNullasDefault: true
+  useNullasDefault: true,
 };
 const db = knex(knexConfig);
 
@@ -29,5 +30,5 @@ server.get("/api/dishs", async (req, res) => {
 //SERVER PORT
 const port = process.env.PORT || 2300;
 server.listen(port, () =>
-  console.log("\n** Recipe Book API running on http://localhost:${port} **\n")
+  console.log(`\n** Recipe Book API running on http://localhost:${port} **\n`)
 );
